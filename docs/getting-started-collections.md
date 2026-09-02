@@ -2,6 +2,12 @@
 
 This guide demonstrates how to use Molecule to test Ansible collections with multiple components and shared testing resources. This approach builds a complete testing framework that showcases best practices for collection-level testing.
 
+## Is this the right path?
+
+Choose this path when the primary content being developed is an Ansible collection. This includes collection metadata, packaging, publishing, collection dependencies, or testing multiple component types together.
+
+Choose [Test a role](getting-started-roles.md) when the focus is one role's behavior, even if that role is located inside a collection. Choose [Test a playbook project](getting-started-playbooks.md) when the role and adjacent collection are being exercised through an `ansible-creator` project's root playbooks and inventory.
+
 ## Overview
 
 This guide covers:
