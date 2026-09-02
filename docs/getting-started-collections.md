@@ -1,6 +1,6 @@
 # Collection Testing
 
-Use this page when the primary content under development is an Ansible collection. It covers testing at the collection level with multiple Ansible content types, including roles, plugins, filters, and modules, along with shared test infrastructure.
+Use this page when the primary content under development is an Ansible collection. It covers testing at the collection level with multiple Ansible content types, including roles, plugins, and modules, along with shared test infrastructure.
 
 ## Overview
 
