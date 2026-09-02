@@ -1,8 +1,6 @@
 # Test a role
 
-Use this page when the primary deliverable is an Ansible role and the main question is whether the role produces the expected result.
-
-Choose [Test a playbook project](getting-started-playbooks.md) when the scenario is primarily exercising an `ansible-creator` project’s root playbooks, inventory, and configuration. Choose [Test a collection](getting-started-collections.md) when collection packaging or multiple collection component types are the focus.
+Use this page when the main question is whether a role produces the expected result. It shows how to create a Molecule scenario, provision a disposable test instance, apply the role, and verify its result.
 
 ## Prerequisites
 
