@@ -10,7 +10,7 @@ Install:
 - [Molecule](https://docs.ansible.com/projects/molecule/installation/)
 - [Podman](https://podman.io/getting-started/installation)
 
-The example uses the `containers.podman` collection for the container lifecycle and connection plugin. Molecule installs it from the scenario requirements file during the dependency action.
+The example uses the `containers.podman` collection for the container lifecycle and connection plugin. Molecule installs it from the scenario requirements file during the dependency sequence.
 
 ## Create a role
 
