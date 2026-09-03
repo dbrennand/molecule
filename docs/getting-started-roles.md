@@ -33,11 +33,11 @@ Add a small task to `tasks/main.yml`:
     mode: "0644"
 ```
 
-The example uses a disposable Fedora-based development-tools container. The role under test writes a marker file into that container, and `verify.yml` checks that the file exists.
+The example uses a disposable container. The role under test writes a marker file into that container, and `verify.yml` checks that the file exists.
 
 ## Scenario layout
 
-The completed scenario has this structure:
+After completing the steps below, the completed scenario will have this structure:
 
 ```text
 my_role/
@@ -67,6 +67,7 @@ ansible:
   cfg:
     defaults:
       deprecation_warnings: false
+      roles_path: ${MOLECULE_PROJECT_DIRECTORY}/../
   executor:
     args:
       ansible_playbook:
@@ -107,7 +108,7 @@ all:
       hosts:
         molecule-fedora:
           ansible_connection: containers.podman.podman
-          container_image: ghcr.io/ansible/community-ansible-dev-tools:latest
+          container_image: quay.io/centos/centos:stream9
           container_command: sleep 1d
           container_privileged: false
 ```
@@ -116,7 +117,7 @@ The inventory is the source of the container name, image, command, and connectio
 
 ## Create and destroy the test instance
 
-`molecule/default/create.yml` creates the inventory-defined container:
+`molecule/default/create.yml` creates the inventory defined container:
 
 ```yaml
 ---
@@ -156,7 +157,7 @@ The inventory is the source of the container name, image, command, and connectio
       loop: "{% raw %}{{ groups['molecule'] }}{% endraw %}"
 ```
 
-For a more complete lifecycle implementation with failure diagnostics, see [Using podman containers](examples/podman.md).
+For a more complete lifecycle implementation, see [Using podman containers](examples/podman.md).
 
 ## Converge the role
 
@@ -172,8 +173,6 @@ For a more complete lifecycle implementation with failure diagnostics, see [Usin
       ansible.builtin.include_role:
         name: my_role
 ```
-
-A role inside an `ansible-creator` playbook project can use the same role-focused converge pattern. Return to [Test a playbook project](getting-started-playbooks.md) when the scenario should invoke `site.yml` or another root playbook instead.
 
 ## Verify the result
 
@@ -207,7 +206,7 @@ Run the full lifecycle from the role directory:
 molecule test
 ```
 
-Molecule runs the configured sequence:
+Molecule runs the configured sequences:
 
 ```text
 dependency → destroy → create → converge → idempotence → verify → destroy
@@ -216,12 +215,10 @@ dependency → destroy → create → converge → idempotence → verify → de
 The scenario should finish successfully and remove the test container. If it fails, rerun with `--debug` for more detail:
 
 ```bash
-molecule test --debug
+molecule --debug test
 ```
 
 ## Next steps
 
-- Use [Using podman containers](examples/podman.md) for a fuller ansible-native Podman lifecycle.
+- Use [Using podman containers](examples/podman.md) for a detailed ansible-native Podman lifecycle.
 - Use [Systemd Container](guides/systemd-container.md) when the role manages services and needs `systemd` as PID 1.
-- Use [Test a playbook project](getting-started-playbooks.md) when the role is exercised through an `ansible-creator` project’s root playbooks.
-- Use [Test a collection](getting-started-collections.md) when collection packaging or multi-component testing is the primary concern.
