@@ -150,3 +150,4 @@ yournamespace
 yourrole
 zceos
 zzyzx
+devfile
