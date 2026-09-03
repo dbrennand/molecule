@@ -27,10 +27,10 @@ cd /tmp/my-playbooks
 
 ## Generated Ansible playbook project structure
 
-The authoritative [`ansible-creator` generated Ansible playbook project Structure](https://docs.ansible.com/projects/creator/installing/#generated-ansible-playbook-project-structure) includes more than the files needed for a first Molecule scenario. This testing-relevant view preserves the important generated paths:
+The authoritative [`ansible-creator` generated Ansible playbook project Structure](https://docs.ansible.com/projects/creator/installing/#generated-ansible-playbook-project-structure) includes more than the files needed for a first Molecule scenario:
 
 ```text
-playbook-project/
+my-playbooks/
 ├── ansible.cfg
 ├── ansible-navigator.yml
 ├── collections/
@@ -55,11 +55,11 @@ playbook-project/
 └── .vscode/
 ```
 
-The adjacent collection and its `run` role are part of the generated playbook-project scaffold. Their presence does not by itself make this a collection-testing project.
+The adjacent collection and its `run` role are part of the generated playbook-project scaffold. Their presence does not make this a collection-testing project.
 
 ## Add Molecule to the project
 
-`ansible-creator` generates the playbook project above, but it does not generate the Molecule scenarios described in this guide. Add a `molecule/` directory at the project root and use it to exercise the root playbooks.
+`ansible-creator` generates the playbook project above, but it does not generate the Molecule scenarios described in this guide. Add a `molecule/` directory at the project root and use it to test the root playbooks.
 
 **Create Molecule requirements file:**
 
